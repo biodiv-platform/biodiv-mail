@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeoutException;
 
 import javax.servlet.ServletContextEvent;
 
@@ -88,7 +89,7 @@ public class MailServeletContextListener extends GuiceServletContextListener {
 		try {
 			injector.getInstance(RabbitMQConsumer.class).getMessage();
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.error(ex.getMessage());
 		}
 
 		return injector;
@@ -103,7 +104,8 @@ public class MailServeletContextListener extends GuiceServletContextListener {
 		Channel channel = injector.getInstance(Channel.class);
 		try {
 			channel.getConnection().close();
-		} catch (IOException e) {
+			channel.close();
+		} catch (IOException | TimeoutException e) {
 			logger.error(e.getMessage());
 		}
 		super.contextDestroyed(servletContextEvent);

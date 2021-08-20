@@ -22,19 +22,19 @@ public class MailUtil {
 	private String text;
 	private boolean isHtml;
 
-	private final static String username;
-	private final static String password;
-	private final static String mailSenderEmail;
-	private final static String smtpHost;
-	private final static String smtpPort;
+	private static final String USERNAME;
+	private static final String PASSWORD;
+	private static final String MAILSENDEREMAIL;
+	private static final String SMTPHOST;
+	private static final String SMTPPORT;
 
 	static {
 		Properties prop = PropertyFileUtil.fetchProperty("config.properties");
-		username = prop.getProperty("mail_smtp_username");
-		password = prop.getProperty("mail_smtp_password");
-		mailSenderEmail = prop.getProperty("mail_sender_email");
-		smtpHost = prop.getProperty("mail_smtp_host");
-		smtpPort = prop.getProperty("mail_smtp_port");
+		USERNAME = prop.getProperty("mail_smtp_username");
+		PASSWORD = prop.getProperty("mail_smtp_password");
+		MAILSENDEREMAIL = prop.getProperty("mail_sender_email");
+		SMTPHOST = prop.getProperty("mail_smtp_host");
+		SMTPPORT = prop.getProperty("mail_smtp_port");
 	}
 
 	public MailUtil() {
@@ -50,40 +50,40 @@ public class MailUtil {
 
 	public void sendMail() throws MessagingException, AddressException {
 		Properties props = new Properties();
-		props.setProperty("mail.smtp.host", smtpHost);
-        props.setProperty("mail.smtp.port", smtpPort);
-        props.put("mail.smtp.starttls.enable", "true");  
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.ssl.trust", "*"); 
-        // props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.debug", "true");
-		
+		props.setProperty("mail.smtp.host", SMTPHOST);
+		props.setProperty("mail.smtp.port", SMTPPORT);
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.ssl.trust", "*");
+		props.put("mail.debug", "true");
+		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
+
 		Session session = Session.getInstance(props, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				return new PasswordAuthentication(username, password);
+				return new PasswordAuthentication(USERNAME, PASSWORD);
 			}
 		});
 
 		MimeMessage message = new MimeMessage(session);
 		List<InternetAddress> address = new ArrayList<>();
-		for (String recipient: to) {
+		for (String recipient : to) {
 			address.add(new InternetAddress(recipient));
 		}
 		List<InternetAddress> bccAddress = new ArrayList<>();
-		for (String recipient: bcc) {
+		for (String recipient : bcc) {
 			bccAddress.add(new InternetAddress(recipient));
 		}
 		InternetAddress[] addresses = new InternetAddress[address.size()];
 		InternetAddress[] bccAddresses = new InternetAddress[address.size()];
-		message.setFrom(new InternetAddress(mailSenderEmail));
+		message.setFrom(new InternetAddress(MAILSENDEREMAIL));
 		message.addRecipients(Message.RecipientType.TO, address.toArray(addresses));
-		if (bccAddress.size() > 0) {
-			message.addRecipients(Message.RecipientType.BCC, bccAddress.toArray(bccAddresses));			
+		if (!bccAddress.isEmpty()) {
+			message.addRecipients(Message.RecipientType.BCC, bccAddress.toArray(bccAddresses));
 		}
 		message.setSubject(subject);
 		message.setContent(text, isHtml ? "text/html" : "text/plain");
-		
+
 		Transport.send(message);
 	}
 

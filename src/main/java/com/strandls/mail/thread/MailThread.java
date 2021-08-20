@@ -1,12 +1,14 @@
 package com.strandls.mail.thread;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.strandls.mail.util.MailUtil;
 
 public class MailThread extends MailUtil implements Runnable {
-	
+
+	private final Logger logger = LoggerFactory.getLogger(MailThread.class);
+
 	public MailThread(String[] to, String[] bcc, String subject, String content, boolean isHTML) {
 		super(to, bcc, subject, content, isHTML);
 	}
@@ -15,11 +17,9 @@ public class MailThread extends MailUtil implements Runnable {
 	public void run() {
 		try {
 			sendMail();
-		} catch (AddressException e) {
-			e.printStackTrace();
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+		} 
 	}
 
 }

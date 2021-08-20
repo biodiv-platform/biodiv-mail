@@ -6,12 +6,12 @@
 	<artifactId>mail</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.0</version>
-	<name>mail Maven Webapp</name>
-	<url>http://maven.apache.org</url>
-	
+	<name>biodiv-mail</name>
+	<url>https://github.com/strandls/biodiv-mail</url>
+
 	<properties>
 		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>	
+		<maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
 		<swagger-ui.version>3.23.5</swagger-ui.version>
 		<maven-war-plugin.version>3.2.2</maven-war-plugin.version>
 		<replacer.version>1.5.3</replacer.version>
@@ -19,6 +19,11 @@
 		<exec-maven-plugin.version>1.3.2</exec-maven-plugin.version>
 		<openapi-generator-cli.version>4.0.3</openapi-generator-cli.version>
 		<location>com.strandls.mail</location>
+
+		<!-- Sonar Cloud -->
+		<sonar.projectKey>strandls_biodiv-mail</sonar.projectKey>
+		<sonar.organization>strandls</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<distributionManagement>

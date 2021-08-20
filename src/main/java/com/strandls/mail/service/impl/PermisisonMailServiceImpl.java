@@ -24,14 +24,14 @@ public class PermisisonMailServiceImpl implements PermisisonMailService {
 	@Override
 	public void sendPermissionRequest(List<MailInfo> info) {
 		String role = info.get(0).getData().get("role").toString();
-		threadUtil.startThread("permissionRequest.ftlh", "Permission Request for the role of " + role, info);
+		threadUtil.startThread("taxon-request.ftlh", "Permission Request for the role of " + role, info);
 
 	}
 
 	@Override
 	public void sendPermissionGranted(List<MailInfo> info) {
 		String role = info.get(0).getData().get("role").toString();
-		threadUtil.startThread("permissionGrant.ftlh", "Permission Granted for the role of " + role, info);
+		threadUtil.startThread("taxon-request-granted.ftlh", "Permission Granted for the role of " + role, info);
 
 	}
 

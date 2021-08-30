@@ -17,6 +17,7 @@ import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
 import com.strandls.mail.service.ObservationMailService;
+import com.strandls.mail.service.PermisisonMailService;
 import com.strandls.mail.service.UserGroupService;
 import com.strandls.mail.service.UserMailService;
 import com.strandls.mail.util.NotificationUtil;
@@ -27,13 +28,16 @@ import com.strandls.mail_utility.util.AppUtil;
 public class RabbitMQConsumer {
 
 	@Inject
-	UserMailService userService;
+	private UserMailService userService;
 
 	@Inject
-	ObservationMailService observationService;
+	private ObservationMailService observationService;
 
 	@Inject
-	UserGroupService userGroupService;
+	private UserGroupService userGroupService;
+
+	@Inject
+	private PermisisonMailService permissionService;
 
 	@Inject
 	ObjectMapper mapper;
@@ -157,6 +161,13 @@ public class RabbitMQConsumer {
 			case SEND_REQUEST:
 				userGroupService.sendRequest(info);
 				break;
+			case PERMISSION_REQUEST:
+				permissionService.sendPermissionRequest(info);
+				break;
+			case PERMISSION_GRANTED:
+				permissionService.sendPermissionGranted(info);
+				break;
+
 			default:
 				logger.error("Invalid mail type: {}", type);
 			}

@@ -3,6 +3,7 @@
   <display-name>Mail</display-name>
   <welcome-file-list>
     <welcome-file>index.json</welcome-file>
+    <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   <listener>
     <listener-class>com.strandls.mail.MailServeletContextListener</listener-class>

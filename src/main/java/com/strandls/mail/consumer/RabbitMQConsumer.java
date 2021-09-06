@@ -1,38 +1,43 @@
 package com.strandls.mail.consumer;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DeliverCallback;
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
 import com.strandls.mail.service.ObservationMailService;
+import com.strandls.mail.service.PermisisonMailService;
 import com.strandls.mail.service.UserGroupService;
 import com.strandls.mail.service.UserMailService;
 import com.strandls.mail.util.NotificationUtil;
 import com.strandls.mail.util.PropertyFileUtil;
-import com.strandls.mail_utility.util.AppUtil;
 import com.strandls.mail_utility.model.EnumModel.MAIL_TYPE;
+import com.strandls.mail_utility.util.AppUtil;
 
 public class RabbitMQConsumer {
 
 	@Inject
-	UserMailService userService;
+	private UserMailService userService;
 
 	@Inject
-	ObservationMailService observationService;
+	private ObservationMailService observationService;
 
 	@Inject
-	UserGroupService userGroupService;
+	private UserGroupService userGroupService;
+
+	@Inject
+	private PermisisonMailService permissionService;
 
 	@Inject
 	ObjectMapper mapper;
@@ -42,13 +47,13 @@ public class RabbitMQConsumer {
 	@Inject
 	private Channel channel;
 
-	public void getMessage() throws Exception {
+	public void getMessage() throws IOException {
 		DeliverCallback callback = (consumerTag, delivery) -> {
-			String message = new String(delivery.getBody(), "UTF-8");
+			String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
 			processMessage(message);
 		};
 		DeliverCallback notificationCallback = (consumerTag, delivery) -> {
-			String message = new String(delivery.getBody(), "UTF-8");
+			String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
 			processNotification(message);
 		};
 		channel.basicConsume(PropertyFileUtil.fetchProperty("config.properties", "rabbitmq_queue"), true, callback,
@@ -65,13 +70,13 @@ public class RabbitMQConsumer {
 			RecipientInfo recipient = mapper.readValue(message, RecipientInfo.class);
 			List<MailInfo> info = new ArrayList<MailInfo>();
 			if (recipient.getRecipients() != null) {
-				recipient.getRecipients().forEach((r) -> {
+				recipient.getRecipients().forEach(r -> {
 					MailInfo m = mapper.convertValue(r, MailInfo.class);
 					info.add(m);
 				});
 			}
 
-			if (info.size() == 0) {
+			if (info.isEmpty()) {
 				logger.error("No recipients: {}", recipient.getRecipients());
 				return;
 			}
@@ -156,6 +161,13 @@ public class RabbitMQConsumer {
 			case SEND_REQUEST:
 				userGroupService.sendRequest(info);
 				break;
+			case PERMISSION_REQUEST:
+				permissionService.sendPermissionRequest(info);
+				break;
+			case PERMISSION_GRANTED:
+				permissionService.sendPermissionGranted(info);
+				break;
+
 			default:
 				logger.error("Invalid mail type: {}", type);
 			}

@@ -5,11 +5,15 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 
 public class TemplateUtil {
 
+	private final Logger logger = LoggerFactory.getLogger(TemplateUtil.class);
 	@Inject
 	private Configuration configuration;
 
@@ -21,7 +25,7 @@ public class TemplateUtil {
 			template = configuration.getTemplate(templateFile);
 			template.process(model, writer);
 		} catch (Exception ex) {
-			ex.printStackTrace();
+			logger.error(ex.getMessage());
 		}
 		return writer.toString();
 	}

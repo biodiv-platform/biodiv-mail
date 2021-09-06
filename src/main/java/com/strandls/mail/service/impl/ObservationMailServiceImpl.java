@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.service.ObservationMailService;
+import com.strandls.mail.util.AppUtil.TEMPLATE;
 import com.strandls.mail.util.ThreadUtil;
 
 public class ObservationMailServiceImpl implements ObservationMailService {
@@ -23,102 +24,102 @@ public class ObservationMailServiceImpl implements ObservationMailService {
 			subject = "Removed observation from group";
 		}
 
-		threadUtil.startThread( "observation.ftlh", subject, info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), subject, info);
 	}
 
 	@Override
 	public void sendObservationTaggedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Tagged in observation comment", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Tagged in observation comment", info);
 	}
 
 	@Override
 	public void sendObservationSuggestedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Species name suggested", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Species name suggested", info);
 	}
 
 	@Override
 	public void sendObservationCommentedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "New comment in observation", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "New comment in observation", info);
 	}
 
 	@Override
 	public void sendObservationDownloadMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Download request", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Download request", info);
 	}
 
 	@Override
 	public void sendObservationFactAddedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Fact added", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Fact added", info);
 	}
 
 	@Override
 	public void sendObservationFactUpdatedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Fact updated", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Fact updated", info);
 	}
 
 	@Override
 	public void sendObservationAgreedSpeciesMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Species name suggested", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Species name suggested", info);
 	}
 
 	@Override
 	public void sendObservationRemovedSpeciesMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Species name deleted", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Species name deleted", info);
 	}
 
 	@Override
 	public void sendObservationCustomFieldUpdatedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Custom field edited", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Custom field edited", info);
 	}
 
 	@Override
 	public void sendObservationFeaturedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Featured observation", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Featured observation", info);
 	}
 
 	@Override
 	public void sendObservationAddedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Observation added", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Observation added", info);
 	}
 
 	@Override
 	public void sendObservationFlaggedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Observation flagged", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Observation flagged", info);
 	}
 
 	@Override
 	public void sendObservationLockedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Validated and locked species name", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Validated and locked species name", info);
 	}
 
 	@Override
 	public void sendObservationUpdatedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Observation updated", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Observation updated", info);
 	}
 
 	@Override
 	public void sendObservationUnlockedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Unlocked species name", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Unlocked species name", info);
 	}
 
 	@Override
 	public void sendObservationTagUpdatedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Observation tag updated", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Observation tag updated", info);
 	}
 
 	@Override
 	public void sendObservationDeletedMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Observation deleted", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Observation deleted", info);
 	}
 
 	@Override
 	public void sendRatedMediaMail(List<MailInfo> info) {
-		threadUtil.startThread( "observation.ftlh", "Observation media rated", info);
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Observation media rated", info);
 	}
 
 	@Override
 	public void sendMyUploadsDeletionMail(List<MailInfo> info) {
-		threadUtil.startThread( "deletion.ftlh", "Attn: Your image uploads are due for deletion", info);
+		threadUtil.startThread(TEMPLATE.DELETION.getValue(), "Attn: Your image uploads are due for deletion", info);
 	}
 
 }

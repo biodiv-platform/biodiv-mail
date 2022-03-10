@@ -67,20 +67,15 @@ public class MailUtil {
 
 		MimeMessage message = new MimeMessage(session);
 		List<InternetAddress> address = new ArrayList<>();
+		
 		for (String recipient : to) {
 			address.add(new InternetAddress(recipient));
 		}
-		List<InternetAddress> bccAddress = new ArrayList<>();
-		for (String recipient : bcc) {
-			bccAddress.add(new InternetAddress(recipient));
-		}
+
 		InternetAddress[] addresses = new InternetAddress[address.size()];
-		InternetAddress[] bccAddresses = new InternetAddress[address.size()];
+
 		message.setFrom(new InternetAddress(MAILSENDEREMAIL));
 		message.addRecipients(Message.RecipientType.TO, address.toArray(addresses));
-		if (!bccAddress.isEmpty()) {
-			message.addRecipients(Message.RecipientType.BCC, bccAddress.toArray(bccAddresses));
-		}
 		message.setSubject(subject);
 		message.setContent(text, isHtml ? "text/html" : "text/plain");
 

@@ -16,6 +16,7 @@ import com.rabbitmq.client.DeliverCallback;
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
+import com.strandls.mail.service.DocumentMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PermisisonMailService;
 import com.strandls.mail.service.UserGroupService;
@@ -32,6 +33,9 @@ public class RabbitMQConsumer {
 
 	@Inject
 	private ObservationMailService observationService;
+
+	@Inject
+	private DocumentMailService documentService;
 
 	@Inject
 	private UserGroupService userGroupService;
@@ -95,6 +99,26 @@ public class RabbitMQConsumer {
 			case DOWNLOAD_MAIL:
 				observationService.sendObservationDownloadMail(info);
 				break;
+
+			case DOCUMENT_ADDED:
+				documentService.sendDocumentAddedMail(info);
+				break;
+			case DOCUMENT_UPDATED:
+				documentService.sendDocumentUpdatedMail(info);
+				break;
+			case DOCUMENT_DELETED:
+				documentService.sendDocumentDeletedMail(info);
+				break;
+			case DOCUMENT_FLAGGED:
+				documentService.sendDocumentFlaggedMail(info);
+				break;
+			case DOCUMENT_POST_TO_GROUP:
+				documentService.sendDocumentPostToGroupMail(info);
+				break;
+			case DOCUMENT_COMMENT_POST:
+				documentService.sendDocumentCommentedMail(info);
+				break;
+
 			case COMMENT_POST:
 				observationService.sendObservationCommentedMail(info);
 				break;

@@ -196,6 +196,7 @@ public class RabbitMQConsumer {
 				logger.error("Invalid mail type: {}", type);
 			}
 		} catch (Exception ex) {
+			ex.printStackTrace();
 			logger.error("Could not resolve: {}", ex.getMessage());
 		}
 	}

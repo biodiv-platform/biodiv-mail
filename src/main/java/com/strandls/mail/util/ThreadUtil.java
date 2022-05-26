@@ -31,9 +31,11 @@ public class ThreadUtil {
 
 					Map<String, Object> whatPosted = (Map<String, Object>) data.get("whatPosted");
 					if (whatPosted != null) {
-						String iconUrl = whatPosted.get("icon").toString();
-						iconUrl = iconUrl.replace("_th1.", ".");
-						whatPosted.put("icon", iconUrl);
+						if(whatPosted.get("icon") != null) {
+							String iconUrl = whatPosted.get("icon").toString();
+							iconUrl = iconUrl.replace("_th1.", ".");
+							whatPosted.put("icon", iconUrl);
+						}		
 						data.put("whatPosted", whatPosted);
 					}
 

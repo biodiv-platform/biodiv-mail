@@ -41,7 +41,8 @@ public class AppUtil {
 		WELCOME("welcome.ftlh"),
 		UGINVITE("invite.ftlh"),
 		UGREQUEST("request.ftlh"),
-		AUTHENTICATION("auth.ftlh");
+		AUTHENTICATION("auth.ftlh"),
+		CCA("cca.ftlh");
 		
 		private String action;
 

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import com.strandls.authentication_utility.util.AuthUtil;
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.thread.MailThread;
 
@@ -21,6 +22,13 @@ public class ThreadUtil {
 		if (recipients != null) {
 			for (MailInfo info : recipients) {
 
+				String usertoken = info.getTo() != null && info.getTo().length > 0 && info.getTo()[0] != null
+						&& !info.getTo()[0].isEmpty()
+								? AuthUtil.generateAccessTokenFromEmail(info.getTo()[0]).get("access_token").toString()
+								: "x";
+				String unregisterUrl = PropertyFileUtil.fetchProperty("config.properties", "serverUrl")
+						+ PropertyFileUtil.fetchProperty("config.properties", "unregisterEmailNotification")
+						+ usertoken;
 				Map<String, Object> data = info.getData();
 				if (data != null) {
 					System.out.println("Before manipulation");
@@ -28,7 +36,7 @@ public class ThreadUtil {
 
 					data.put("siteName", PropertyFileUtil.fetchProperty("config.properties", "siteName"));
 					data.put("serverUrl", PropertyFileUtil.fetchProperty("config.properties", "serverUrl"));
-
+					data.put("unregisterEmailNotification", unregisterUrl);
 					Map<String, Object> whatPosted = (Map<String, Object>) data.get("whatPosted");
 					if (whatPosted != null) {
 						if(whatPosted.get("icon") != null) {

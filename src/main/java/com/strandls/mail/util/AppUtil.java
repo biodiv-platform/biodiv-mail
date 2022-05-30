@@ -38,11 +38,7 @@ public class AppUtil {
 
 		OBSERVATION("observation.ftlh"),
 		DELETION("deletion.ftlh"),
-		WELCOME("welcome.ftlh"),
-		UGINVITE("invite.ftlh"),
-		UGREQUEST("request.ftlh"),
-		AUTHENTICATION("auth.ftlh"),
-		CCA("cca.ftlh");
+		WELCOME("welcome.ftlh"), UGINVITE("invite.ftlh"), UGREQUEST("request.ftlh"), AUTHENTICATION("auth.ftlh"), CCA("cca.ftlh");
 		
 		private String action;
 

@@ -23,5 +23,4 @@ public interface CCAMailService {
 	void sendCCATemplateUpdatedMail(List<MailInfo> info);
 
 	void sendCCATemplateDeletedMail(List<MailInfo> info);
-
 }

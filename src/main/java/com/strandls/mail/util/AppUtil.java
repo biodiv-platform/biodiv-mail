@@ -35,11 +35,9 @@ public class AppUtil {
 	}
 
 	public enum TEMPLATE {
+		OBSERVATION("observation.ftlh"), DOCUMENT("document.ftlh"), DELETION("deletion.ftlh"), WELCOME("welcome.ftlh"),
+		UGINVITE("invite.ftlh"), UGREQUEST("request.ftlh"), AUTHENTICATION("auth.ftlh"), CCA("cca.ftlh");
 
-		OBSERVATION("observation.ftlh"),
-		DELETION("deletion.ftlh"),
-		WELCOME("welcome.ftlh"), UGINVITE("invite.ftlh"), UGREQUEST("request.ftlh"), AUTHENTICATION("auth.ftlh"), CCA("cca.ftlh");
-		
 		private String action;
 
 		private TEMPLATE(String action) {

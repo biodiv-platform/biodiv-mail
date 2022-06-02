@@ -3,6 +3,7 @@ package com.strandls.mail.service.impl;
 import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 import com.strandls.mail.service.CCAMailService;
+import com.strandls.mail.service.DocumentMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PermisisonMailService;
 import com.strandls.mail.service.UserGroupService;
@@ -17,6 +18,7 @@ public class ServiceModule extends AbstractModule {
 		bind(UserGroupService.class).to(UserGroupServiceImpl.class).in(Scopes.SINGLETON);
 		bind(PermisisonMailService.class).to(PermisisonMailServiceImpl.class).in(Scopes.SINGLETON);
 		bind(CCAMailService.class).to(CCAMailService.class).in(Scopes.SINGLETON);
+		bind(DocumentMailService.class).to(DocumentMailServiceImpl.class).in(Scopes.SINGLETON);
 	}
 
 }

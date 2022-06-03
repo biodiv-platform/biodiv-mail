@@ -17,7 +17,7 @@ public class ServiceModule extends AbstractModule {
 		bind(ObservationMailService.class).to(ObservationMailServiceImpl.class).in(Scopes.SINGLETON);
 		bind(UserGroupService.class).to(UserGroupServiceImpl.class).in(Scopes.SINGLETON);
 		bind(PermisisonMailService.class).to(PermisisonMailServiceImpl.class).in(Scopes.SINGLETON);
-		bind(CCAMailService.class).to(CCAMailService.class).in(Scopes.SINGLETON);
+		bind(CCAMailService.class).to(CCAMailServiceImpl.class).in(Scopes.SINGLETON);
 		bind(DocumentMailService.class).to(DocumentMailServiceImpl.class).in(Scopes.SINGLETON);
 	}
 

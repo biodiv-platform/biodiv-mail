@@ -19,6 +19,7 @@ import com.strandls.mail.model.RecipientInfo;
 import com.strandls.mail.service.DocumentMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PermisisonMailService;
+import com.strandls.mail.service.SpeciesMailService;
 import com.strandls.mail.service.UserGroupService;
 import com.strandls.mail.service.UserMailService;
 import com.strandls.mail.util.NotificationUtil;
@@ -36,6 +37,9 @@ public class RabbitMQConsumer {
 
 	@Inject
 	private DocumentMailService documentService;
+
+	@Inject
+	private SpeciesMailService speciesService;
 
 	@Inject
 	private UserGroupService userGroupService;
@@ -98,6 +102,38 @@ public class RabbitMQConsumer {
 				break;
 			case DOWNLOAD_MAIL:
 				observationService.sendObservationDownloadMail(info);
+				break;
+
+			case SPECIES_ADDED:
+				speciesService.sendSpeciesAddedMail(info);
+				break;
+			case SPECIES_UPDATED:
+				speciesService.sendSpeciesUpdatedMail(info);
+				break;
+			case SPECIES_DELETED:
+				speciesService.sendSpeciesDeletedMail(info);
+				break;
+			case SPECIES_FACT:
+				speciesService.sendSpeciesFactUpdateMail(info);
+				break;
+			case SPECIES_RESOURCE:
+				speciesService.sendSpeciesUpdatedResorce(info);
+				break;
+			case SPECIES_SYNONYMS:
+				speciesService.sendSpeciesSynonymUpdateMail(info);
+				break;
+			case SPECIES_COMMON_NAME:
+				speciesService.sendSpeciesCommonNameUpdateMail(info);
+				break;
+			case SPECIES_FIELD_UPDATED:
+				speciesService.sendSpeciesFieldUpdatedMail(info);
+				break;
+
+			case SPECIES_POST_TO_GROUP:
+				speciesService.sendSpeciesPostToGroupMail(info);
+				break;
+			case SPECIES_COMMENT_POST:
+				speciesService.sendSpeciesCommentedMail(info);
 				break;
 
 			case DOCUMENT_ADDED:

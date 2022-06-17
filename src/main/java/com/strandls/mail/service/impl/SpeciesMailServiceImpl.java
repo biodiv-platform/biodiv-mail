@@ -20,9 +20,9 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 		String submitType = info.get(0).getData().get("submitType").toString();
 		String subject;
 		if (submitType.equalsIgnoreCase("post")) {
-			subject = "Posted document to group";
+			subject = "Posted species to group";
 		} else {
-			subject = "Removed document from group";
+			subject = "Removed species from group";
 		}
 
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), subject, info);

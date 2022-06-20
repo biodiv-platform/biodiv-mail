@@ -104,4 +104,16 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species resource updated", info);		
 	}
 
+	@Override
+	public void sendSpeciesFieldDeletedMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species field removed", info);
+		
+	}
+
+	@Override
+	public void sendSpeciesFieldAddedMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species field Added", info);
+		
+	}
+
 }

@@ -125,6 +125,12 @@ public class RabbitMQConsumer {
 			case SPECIES_COMMON_NAME:
 				speciesService.sendSpeciesCommonNameUpdateMail(info);
 				break;
+			case SPECIES_FIELD_ADDED:
+				speciesService.sendSpeciesFieldAddedMail(info);
+				break;
+			case SPECIES_FIELD_DELETED:
+				speciesService.sendSpeciesFieldDeletedMail(info);
+				break;
 			case SPECIES_FIELD_UPDATED:
 				speciesService.sendSpeciesFieldUpdatedMail(info);
 				break;

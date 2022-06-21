@@ -45,7 +45,7 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 
 	@Override
 	public void sendSpeciesFactUpdateMail(List<MailInfo> info) {
-		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species Traits updated", info);
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species traits updated", info);
 
 	}
 
@@ -112,7 +112,7 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 
 	@Override
 	public void sendSpeciesFieldAddedMail(List<MailInfo> info) {
-		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species field Added", info);
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species field added", info);
 		
 	}
 

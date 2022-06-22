@@ -35,7 +35,6 @@ public class AppUtil {
 	}
 
 	public enum TEMPLATE {
-
 		SPECIES("species.ftlh"),OBSERVATION("observation.ftlh"), DOCUMENT("document.ftlh"), DELETION("deletion.ftlh"), WELCOME("welcome.ftlh"),
 		UGINVITE("invite.ftlh"), UGREQUEST("request.ftlh"), AUTHENTICATION("auth.ftlh");
 

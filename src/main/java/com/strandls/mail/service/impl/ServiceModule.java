@@ -19,8 +19,6 @@ public class ServiceModule extends AbstractModule {
 		bind(PermisisonMailService.class).to(PermisisonMailServiceImpl.class).in(Scopes.SINGLETON);
 		bind(DocumentMailService.class).to(DocumentMailServiceImpl.class).in(Scopes.SINGLETON);
 		bind(SpeciesMailService.class).to(SpeciesMailServiceImpl.class).in(Scopes.SINGLETON);
-
-
 	}
 
 }

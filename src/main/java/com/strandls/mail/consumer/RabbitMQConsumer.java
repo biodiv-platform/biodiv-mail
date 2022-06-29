@@ -181,7 +181,7 @@ public class RabbitMQConsumer {
 				ccaMailService.sendCCADeletedMail(info);
 				break;
 			case CCA_DATA_UPDATED:
-				ccaMailService.sendCCADeletedMail(info);
+				ccaMailService.sendCCAUpdatedMail(info);
 				break;
 			case CCA_TEMPLATE_ADDED:
 				ccaMailService.sendCCATemplateAddedMail(info);

@@ -39,7 +39,7 @@ public class CCAMailServiceImpl implements CCAMailService {
 
 	@Override
 	public void sendCCAFollowMail(List<MailInfo> info) {
-		threadUtil.startThread(TEMPLATE.CCA.getValue(), "CCA followed", info);
+		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Added follower to cca data", info);
 	}
 
 	@Override
@@ -55,6 +55,11 @@ public class CCAMailServiceImpl implements CCAMailService {
 	@Override
 	public void sendCCATemplateDeletedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Template deleted", info);
+	}
+
+	@Override
+	public void sendCCAPermissionMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Added permission to contribute", info);
 	}
 
 }

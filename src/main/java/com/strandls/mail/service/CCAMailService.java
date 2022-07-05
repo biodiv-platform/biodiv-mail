@@ -18,6 +18,8 @@ public interface CCAMailService {
 	
 	void sendCCAFollowMail(List<MailInfo> info);
 	
+	void sendCCAPermissionMail(List<MailInfo> info);
+	
 	void sendCCATemplateAddedMail(List<MailInfo> info);
 
 	void sendCCATemplateUpdatedMail(List<MailInfo> info);

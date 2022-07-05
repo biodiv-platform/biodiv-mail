@@ -238,6 +238,12 @@ public class RabbitMQConsumer {
 			case CCA_TEMPLATE_COMMENT:
 				ccaMailService.sendCCACommentedMail(info);
 				break;
+			case CCA_DATA_FOLLOW:
+				ccaMailService.sendCCAFollowMail(info);
+				break;
+			case CCA_DATA_PERMISSION:
+				ccaMailService.sendCCAPermissionMail(info);
+				break;
 			case RATED_MEDIA_RESOURCE:
 				observationService.sendRatedMediaMail(info);
 				break;

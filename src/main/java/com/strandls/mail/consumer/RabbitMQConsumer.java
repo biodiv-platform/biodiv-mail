@@ -16,6 +16,7 @@ import com.rabbitmq.client.DeliverCallback;
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
+import com.strandls.mail.service.CCAMailService;
 import com.strandls.mail.service.DocumentMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PermisisonMailService;
@@ -44,6 +45,9 @@ public class RabbitMQConsumer {
 	@Inject
 	private UserGroupService userGroupService;
 
+	@Inject
+	private CCAMailService ccaMailService;
+	
 	@Inject
 	private PermisisonMailService permissionService;
 
@@ -211,6 +215,34 @@ public class RabbitMQConsumer {
 				break;
 			case OBSERVATION_DELETED:
 				observationService.sendObservationDeletedMail(info);
+				break;
+			case CCA_DATA_ADDED:
+				ccaMailService.sendCCAAddedMail(info);
+				break;
+			case CCA_DATA_DELETED:
+				ccaMailService.sendCCADeletedMail(info);
+				break;
+			case CCA_DATA_UPDATED:
+				ccaMailService.sendCCAUpdatedMail(info);
+				break;
+			case CCA_TEMPLATE_ADDED:
+				ccaMailService.sendCCATemplateAddedMail(info);
+				break;
+			case CCA_TEMPLATE_DELETED:
+				ccaMailService.sendCCATemplateDeletedMail(info);
+				break;
+			case CCA_TEMPLATE_UPDATED:
+				ccaMailService.sendCCATemplateUpdatedMail(info);
+				break;
+			case CCA_DATA_COMMENT:
+			case CCA_TEMPLATE_COMMENT:
+				ccaMailService.sendCCACommentedMail(info);
+				break;
+			case CCA_DATA_FOLLOW:
+				ccaMailService.sendCCAFollowMail(info);
+				break;
+			case CCA_DATA_PERMISSION:
+				ccaMailService.sendCCAPermissionMail(info);
 				break;
 			case RATED_MEDIA_RESOURCE:
 				observationService.sendRatedMediaMail(info);

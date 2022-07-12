@@ -241,6 +241,9 @@ public class RabbitMQConsumer {
 			case CCA_DATA_FOLLOW:
 				ccaMailService.sendCCAFollowMail(info);
 				break;
+			case CCA_DATA_UNFOLLOW:
+				ccaMailService.sendCCAUnfollowMail(info);
+				break;
 			case CCA_DATA_PERMISSION:
 				ccaMailService.sendCCAPermissionMail(info);
 				break;

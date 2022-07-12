@@ -43,6 +43,11 @@ public class CCAMailServiceImpl implements CCAMailService {
 	}
 
 	@Override
+	public void sendCCAUnfollowMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Removed follower from cca data", info);
+	}
+
+	@Override
 	public void sendCCATemplateAddedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Template created", info);
 	}

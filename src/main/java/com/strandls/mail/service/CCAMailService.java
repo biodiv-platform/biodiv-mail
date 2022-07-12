@@ -17,6 +17,8 @@ public interface CCAMailService {
 	void sendCCADeletedMail(List<MailInfo> info);
 	
 	void sendCCAFollowMail(List<MailInfo> info);
+
+	void sendCCAUnfollowMail(List<MailInfo> info);
 	
 	void sendCCAPermissionMail(List<MailInfo> info);
 	

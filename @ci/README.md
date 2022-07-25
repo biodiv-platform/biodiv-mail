@@ -18,6 +18,7 @@ export DB_URL="jdbc:postgresql://localhost:5432/database"
 
 export MTPROP_HOST="localhost:8080"
 export MTPROP_SCHEMES="http"
+export ARTIFACTORY_COMPAT=1
 
 export MTPROP_RABBITMQ_HOST="localhost"
 export MTPROP_RABBITMQ_PORT="5672"

@@ -67,4 +67,9 @@ public class CCAMailServiceImpl implements CCAMailService {
 		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Added permission to contribute", info);
 	}
 
+	@Override
+	public void sendCCAPermissionRequestMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Permission requested to contribute", info);
+	}
+
 }

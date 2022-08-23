@@ -22,6 +22,8 @@ public interface CCAMailService {
 	
 	void sendCCAPermissionMail(List<MailInfo> info);
 	
+	void sendCCAPermissionRequestMail(List<MailInfo> info);
+	
 	void sendCCATemplateAddedMail(List<MailInfo> info);
 
 	void sendCCATemplateUpdatedMail(List<MailInfo> info);

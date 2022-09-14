@@ -31,9 +31,6 @@ public class ThreadUtil {
 						+ usertoken;
 				Map<String, Object> data = info.getData();
 				if (data != null) {
-					System.out.println("Before manipulation");
-					System.out.println(info.toString());
-
 					data.put("siteName", PropertyFileUtil.fetchProperty("config.properties", "siteName"));
 					data.put("serverUrl", PropertyFileUtil.fetchProperty("config.properties", "serverUrl"));
 					data.put("unregisterEmailNotification", unregisterUrl);
@@ -43,7 +40,7 @@ public class ThreadUtil {
 							String iconUrl = whatPosted.get("icon").toString();
 							iconUrl = iconUrl.replace("_th1.", ".");
 							whatPosted.put("icon", iconUrl);
-						}		
+						}
 						data.put("whatPosted", whatPosted);
 					}
 
@@ -56,9 +53,6 @@ public class ThreadUtil {
 					}
 
 					info.setData(data);
-					System.out.println("After manipulation");
-					System.out.println(info.toString());
-
 				}
 
 				content = templateUtil.getTemplateAsString(templateFile, data);

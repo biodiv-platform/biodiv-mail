@@ -19,6 +19,7 @@ import com.strandls.mail.model.RecipientInfo;
 import com.strandls.mail.service.CCAMailService;
 import com.strandls.mail.service.DocumentMailService;
 import com.strandls.mail.service.ObservationMailService;
+import com.strandls.mail.service.PageMailService;
 import com.strandls.mail.service.PermisisonMailService;
 import com.strandls.mail.service.SpeciesMailService;
 import com.strandls.mail.service.UserGroupService;
@@ -47,9 +48,12 @@ public class RabbitMQConsumer {
 
 	@Inject
 	private CCAMailService ccaMailService;
-	
+
 	@Inject
 	private PermisisonMailService permissionService;
+
+	@Inject
+	private PageMailService pageMailService;
 
 	@Inject
 	ObjectMapper mapper;
@@ -266,6 +270,18 @@ public class RabbitMQConsumer {
 				break;
 			case PERMISSION_GRANTED:
 				permissionService.sendPermissionGranted(info);
+				break;
+			case PAGE_COMMENT_POST:
+				pageMailService.sendPageCommentedMail(info);
+				break;
+			case PAGE_CREATE:
+				pageMailService.sendPageAddedMail(info);
+				break;
+			case PAGE_UPDATE:
+				pageMailService.sendPageUpdatedMail(info);
+				break;
+			case PAGE_DELETED:
+				pageMailService.sendPageDeletedMail(info);
 				break;
 
 			default:

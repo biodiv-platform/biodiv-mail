@@ -82,7 +82,6 @@ public class RabbitMQConsumer {
 
 	private void processMessage(String message) {
 		try {
-			System.out.println("***** Message: " + message + " *****");
 			RecipientInfo recipient = mapper.readValue(message, RecipientInfo.class);
 			List<MailInfo> info = new ArrayList<MailInfo>();
 			if (recipient.getRecipients() != null) {

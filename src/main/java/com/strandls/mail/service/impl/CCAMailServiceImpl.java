@@ -1,17 +1,19 @@
 package com.strandls.mail.service.impl;
 
 import java.util.List;
+
 import javax.inject.Inject;
+
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.service.CCAMailService;
-import com.strandls.mail.util.ThreadUtil;
 import com.strandls.mail.util.AppUtil.TEMPLATE;
+import com.strandls.mail.util.ThreadUtil;
 
 public class CCAMailServiceImpl implements CCAMailService {
 
 	@Inject
 	private ThreadUtil threadUtil;
-	
+
 	@Override
 	public void sendCCAPostToGroupMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Activate your account with ", info);
@@ -65,6 +67,12 @@ public class CCAMailServiceImpl implements CCAMailService {
 	@Override
 	public void sendCCAPermissionMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Added permission to contribute", info);
+	}
+
+	@Override
+	public void sendCCATemplateTaggedMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Tagged in template comment", info);
+
 	}
 
 }

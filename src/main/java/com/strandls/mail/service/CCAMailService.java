@@ -15,16 +15,19 @@ public interface CCAMailService {
 	void sendCCAUpdatedMail(List<MailInfo> info);
 
 	void sendCCADeletedMail(List<MailInfo> info);
-	
+
 	void sendCCAFollowMail(List<MailInfo> info);
 
 	void sendCCAUnfollowMail(List<MailInfo> info);
-	
+
 	void sendCCAPermissionMail(List<MailInfo> info);
-	
+
 	void sendCCATemplateAddedMail(List<MailInfo> info);
 
 	void sendCCATemplateUpdatedMail(List<MailInfo> info);
 
 	void sendCCATemplateDeletedMail(List<MailInfo> info);
+
+	void sendCCATemplateTaggedMail(List<MailInfo> info);
+
 }

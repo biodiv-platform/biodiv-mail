@@ -27,6 +27,7 @@ import com.strandls.mail.service.UserMailService;
 import com.strandls.mail.util.NotificationUtil;
 import com.strandls.mail.util.PropertyFileUtil;
 import com.strandls.mail_utility.model.EnumModel.MAIL_TYPE;
+import com.strandls.mail_utility.model.EnumModel.OBJECT_TYPE;
 import com.strandls.mail_utility.util.AppUtil;
 
 public class RabbitMQConsumer {
@@ -175,6 +176,26 @@ public class RabbitMQConsumer {
 				observationService.sendObservationSuggestedMail(info);
 				break;
 			case TAGGED_MAIL:
+				OBJECT_TYPE objectType = AppUtil.getObjectType(recipient.getObjectType());
+
+				switch (objectType) {
+				case OBSERVATION:
+					observationService.sendObservationTaggedMail(info);
+					break;
+
+				case DOCUMENT:
+					documentService.sendDocumentTaggedMail(info);
+					break;
+				case CCA:
+					ccaMailService.sendCCATemplateTaggedMail(info);
+					break;
+				case SPECIES:
+					speciesService.sendSpeciesTaggedMail(info);
+					break;
+
+				default:
+					logger.error("Invalid mail type: {}", type);
+				}
 				observationService.sendObservationTaggedMail(info);
 				break;
 			case POST_TO_GROUP:

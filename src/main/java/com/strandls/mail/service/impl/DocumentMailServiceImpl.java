@@ -58,4 +58,10 @@ public class DocumentMailServiceImpl implements DocumentMailService {
 
 	}
 
+	@Override
+	public void sendDocumentTaggedMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.DOCUMENT.getValue(), "Tagged in document comment", info);
+		
+	}
+
 }

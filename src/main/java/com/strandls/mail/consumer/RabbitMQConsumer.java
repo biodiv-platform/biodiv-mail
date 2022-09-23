@@ -287,11 +287,8 @@ public class RabbitMQConsumer {
 			case PAGE_DELETED:
 				pageMailService.sendPageDeletedMail(info);
 				break;
-			case DATATABLE_CREATE:
+			case DATATABLE_CREATED:
 				dataTableMailService.sendDataTableAddedMail(info);
-				break;
-			case DATATABLE_UPDATE:
-				dataTableMailService.sendDataTableUpdatedMail(info);
 				break;
 			case DATATABLE_DELETED:
 				dataTableMailService.sendDataTableDeletedMail(info);

@@ -13,9 +13,5 @@ public interface DataTableMailService {
 
 	void sendDataTableAddedMail(List<MailInfo> info);
 
-	void sendDataTableFlaggedMail(List<MailInfo> info);
-
-	void sendDataTableUpdatedMail(List<MailInfo> info);
-
 	void sendDataTableDeletedMail(List<MailInfo> info);
 }

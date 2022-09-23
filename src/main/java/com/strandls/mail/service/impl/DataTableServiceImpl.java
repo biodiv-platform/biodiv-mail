@@ -40,17 +40,6 @@ public class DataTableServiceImpl implements DataTableMailService {
 
 	}
 
-	@Override
-	public void sendDataTableFlaggedMail(List<MailInfo> info) {
-		threadUtil.startThread(TEMPLATE.DATATABLE.getValue(), "DataTable flagged", info);
-
-	}
-
-	@Override
-	public void sendDataTableUpdatedMail(List<MailInfo> info) {
-		threadUtil.startThread(TEMPLATE.DATATABLE.getValue(), "DataTable updated", info);
-
-	}
 
 	@Override
 	public void sendDataTableDeletedMail(List<MailInfo> info) {

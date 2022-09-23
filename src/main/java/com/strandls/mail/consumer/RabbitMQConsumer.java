@@ -196,7 +196,6 @@ public class RabbitMQConsumer {
 				default:
 					logger.error("Invalid mail type: {}", type);
 				}
-				observationService.sendObservationTaggedMail(info);
 				break;
 			case POST_TO_GROUP:
 				observationService.sendObservationPostToGroupMail(info);

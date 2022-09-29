@@ -37,7 +37,7 @@ public class AppUtil {
 	public enum TEMPLATE {
 		SPECIES("species.ftlh"), OBSERVATION("observation.ftlh"), PAGE("page.ftlh"), DOCUMENT("document.ftlh"),
 		DELETION("deletion.ftlh"), WELCOME("welcome.ftlh"), UGINVITE("invite.ftlh"), UGREQUEST("request.ftlh"),
-		AUTHENTICATION("auth.ftlh"), CCA("cca.ftlh") , DATATABLE("dataTable.ftlh");
+		AUTHENTICATION("auth.ftlh"), CCA("cca.ftlh") , DATATABLE("datatable.ftlh");
 
 		private String action;
 

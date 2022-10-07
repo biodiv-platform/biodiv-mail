@@ -116,4 +116,10 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 		
 	}
 
+	@Override
+	public void sendSpeciesTaggedMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Tagged in species comment", info);
+		
+	}
+
 }

@@ -29,4 +29,7 @@ public interface SpeciesMailService {
 	void sendSpeciesUpdatedResorce(List<MailInfo> info);
 
 	void sendSpeciesDeletedMail(List<MailInfo> info);
+	
+	void sendSpeciesTaggedMail(List<MailInfo> info);
+
 }

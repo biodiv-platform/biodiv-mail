@@ -18,6 +18,7 @@ import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
 import com.strandls.mail.service.CCAMailService;
 import com.strandls.mail.service.DocumentMailService;
+import com.strandls.mail.service.DataTableMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PageMailService;
 import com.strandls.mail.service.PermisisonMailService;
@@ -55,6 +56,9 @@ public class RabbitMQConsumer {
 
 	@Inject
 	private PageMailService pageMailService;
+
+	@Inject
+	private DataTableMailService dataTableMailService;
 
 	@Inject
 	ObjectMapper mapper;
@@ -192,6 +196,9 @@ public class RabbitMQConsumer {
 				case SPECIES:
 					speciesService.sendSpeciesTaggedMail(info);
 					break;
+				case DATATABLE:
+					dataTableMailService.sendDataTableTaggedMail(info);
+					break;
 
 				default:
 					logger.error("Invalid mail type: {}", type);
@@ -302,6 +309,18 @@ public class RabbitMQConsumer {
 				break;
 			case PAGE_DELETED:
 				pageMailService.sendPageDeletedMail(info);
+				break;
+			case DATATABLE_CREATED:
+				dataTableMailService.sendDataTableAddedMail(info);
+				break;
+			case DATATABLE_DELETED:
+				dataTableMailService.sendDataTableDeletedMail(info);
+				break;
+			case DATATABLE_COMMENT_POST:
+				dataTableMailService.sendDataTableCommentedMail(info);
+				break;
+			case DATATABLE_POST_TO_GROUP:
+				dataTableMailService.sendDataTablePostToGroupMail(info);
 				break;
 
 			default:

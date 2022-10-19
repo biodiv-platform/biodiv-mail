@@ -70,6 +70,11 @@ public class CCAMailServiceImpl implements CCAMailService {
 	}
 
 	@Override
+	public void sendCCAPermissionRemovalMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Removed permission to contribute", info);
+	}
+
+	@Override
 	public void sendCCATemplateTaggedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.CCA.getValue(), "Tagged in template comment", info);
 

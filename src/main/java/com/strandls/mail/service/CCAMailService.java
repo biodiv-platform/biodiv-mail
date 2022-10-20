@@ -30,4 +30,6 @@ public interface CCAMailService {
 
 	void sendCCATemplateTaggedMail(List<MailInfo> info);
 
+	void sendCCAPermissionRemovalMail(List<MailInfo> info);
+
 }

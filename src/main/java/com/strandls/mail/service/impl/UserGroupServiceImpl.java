@@ -22,7 +22,7 @@ public class UserGroupServiceImpl implements UserGroupService {
 	public void sendInvites(List<MailInfo> info) {
 		try {
 			String role = info.get(0).getData().get("role").toString();
-			threadUtil.startThread(TEMPLATE.UGINVITE.getValue(), "Invitation to join as " + role + " for group", info);
+			threadUtil.startThread(TEMPLATE.UGINVITE.getValue(), "Added as group " + role, info);
 		} catch (Exception ex) {
 			logger.error(ex.getMessage());
 		}

@@ -280,6 +280,9 @@ public class RabbitMQConsumer {
 			case CCA_DATA_PERMISSION_REMOVED:
 				ccaMailService.sendCCAPermissionRemovalMail(info);
 				break;
+			case CCA_DATA_PERMISSION_REQUEST:
+				ccaMailService.sendCCAPermissionRequestMail(info);
+				break;
 			case RATED_MEDIA_RESOURCE:
 				observationService.sendRatedMediaMail(info);
 				break;

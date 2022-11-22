@@ -80,4 +80,9 @@ public class CCAMailServiceImpl implements CCAMailService {
 
 	}
 
+	@Override
+	public void sendCCAPermissionRequestMail(List<MailInfo> info) {
+		threadUtil.startThread("cca-request-permission.ftlh", "Permission requested to contribute", info);
+	}
+
 }

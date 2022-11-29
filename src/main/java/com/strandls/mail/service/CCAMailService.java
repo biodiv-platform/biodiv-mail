@@ -32,4 +32,6 @@ public interface CCAMailService {
 
 	void sendCCAPermissionRemovalMail(List<MailInfo> info);
 
+	void sendCCAPermissionRequestMail(List<MailInfo> info);
+
 }

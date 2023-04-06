@@ -176,6 +176,9 @@ public class RabbitMQConsumer {
 			case COMMENT_POST:
 				observationService.sendObservationCommentedMail(info);
 				break;
+			case DELETED_COMMENT:
+				observationService.sendObservationDeletedCommentMail(info);
+				break;
 			case SUGGEST_MAIL:
 				observationService.sendObservationSuggestedMail(info);
 				break;

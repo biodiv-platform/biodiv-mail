@@ -153,6 +153,9 @@ public class RabbitMQConsumer {
 			case SPECIES_COMMENT_POST:
 				speciesService.sendSpeciesCommentedMail(info);
 				break;
+			case SPECIES_COMMENT_DELETE:
+				speciesService.sendSpeciesDeletedCommentMail(info);
+				break;
 
 			case DOCUMENT_ADDED:
 				documentService.sendDocumentAddedMail(info);

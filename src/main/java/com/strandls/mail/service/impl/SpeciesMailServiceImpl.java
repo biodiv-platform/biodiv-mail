@@ -36,6 +36,12 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "New comment in species", info);
 
 	}
+	
+	@Override
+	public void sendSpeciesDeletedCommentMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Deleted a comment in species", info);
+
+	}
 
 	@Override
 	public void sendSpeciesAddedMail(List<MailInfo> info) {

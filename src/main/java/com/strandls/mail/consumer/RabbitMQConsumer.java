@@ -316,6 +316,10 @@ public class RabbitMQConsumer {
 			case PAGE_COMMENT_POST:
 				pageMailService.sendPageCommentedMail(info);
 				break;
+
+			case PAGE_COMMENT_DELETE:
+				pageMailService.sendPagesDeletedCommentMail(info);
+				break;
 			case PAGE_CREATE:
 				pageMailService.sendPageAddedMail(info);
 				break;

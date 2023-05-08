@@ -40,7 +40,7 @@ public class PageMailServiceImpl implements PageMailService {
 
 	@Override
 	public void sendPagesDeletedCommentMail(List<MailInfo> info) {
-		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Deleted a comment in pages", info);
+		threadUtil.startThread(TEMPLATE.PAGE.getValue(), "Deleted a comment in pages", info);
 	}
 
 }

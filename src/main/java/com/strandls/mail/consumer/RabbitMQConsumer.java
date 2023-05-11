@@ -338,6 +338,10 @@ public class RabbitMQConsumer {
 			case DATATABLE_COMMENT_POST:
 				dataTableMailService.sendDataTableCommentedMail(info);
 				break;
+			case DATATABLE_COMMENT_DELETE:
+				dataTableMailService.sendDataTableCommentDeleteMail(info);
+				break;
+
 			case DATATABLE_POST_TO_GROUP:
 				dataTableMailService.sendDataTablePostToGroupMail(info);
 				break;

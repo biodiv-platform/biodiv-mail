@@ -40,7 +40,6 @@ public class DataTableServiceImpl implements DataTableMailService {
 
 	}
 
-
 	@Override
 	public void sendDataTableDeletedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.DATATABLE.getValue(), "DataTable deleted", info);
@@ -50,6 +49,12 @@ public class DataTableServiceImpl implements DataTableMailService {
 	@Override
 	public void sendDataTableTaggedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.DATATABLE.getValue(), "Tagged in datatable comment", info);
+
+	}
+
+	@Override
+	public void sendDataTableCommentDeleteMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.DATATABLE.getValue(), "Deleted a comment in datatable", info);
 
 	}
 

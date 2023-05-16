@@ -18,6 +18,7 @@ import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
 import com.strandls.mail.service.CCAMailService;
 import com.strandls.mail.service.DocumentMailService;
+import com.strandls.mail.service.ODKMailService;
 import com.strandls.mail.service.DataTableMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PageMailService;
@@ -59,6 +60,10 @@ public class RabbitMQConsumer {
 
 	@Inject
 	private DataTableMailService dataTableMailService;
+	
+	@Inject
+	private ODKMailService odkMailService; 
+	
 
 	@Inject
 	ObjectMapper mapper;
@@ -325,8 +330,12 @@ public class RabbitMQConsumer {
 			case DATATABLE_COMMENT_POST:
 				dataTableMailService.sendDataTableCommentedMail(info);
 				break;
-			case DATATABLE_POST_TO_GROUP:
+			case DATATABLE_POST_TO_GROUP:				
 				dataTableMailService.sendDataTablePostToGroupMail(info);
+				break;
+			
+			case ODK_USER_EMAIL:
+				odkMailService.sendODKUserMail(info);
 				break;
 
 			default:

@@ -43,6 +43,11 @@ public class ObservationMailServiceImpl implements ObservationMailService {
 	}
 
 	@Override
+	public void sendObservationDeletedCommentMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Deleted a comment in observation", info);
+	}
+
+	@Override
 	public void sendObservationDownloadMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.OBSERVATION.getValue(), "Download request", info);
 	}

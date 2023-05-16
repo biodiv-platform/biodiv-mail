@@ -10,6 +10,8 @@ public interface DocumentMailService {
 
 	void sendDocumentCommentedMail(List<MailInfo> info);
 
+	void sendDocumentDeletedCommentMail(List<MailInfo> info);
+
 	void sendDocumentAddedMail(List<MailInfo> info);
 
 	void sendDocumentFlaggedMail(List<MailInfo> info);

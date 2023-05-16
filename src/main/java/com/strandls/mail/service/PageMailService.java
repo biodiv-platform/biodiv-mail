@@ -13,4 +13,6 @@ public interface PageMailService {
 
 	void sendPageDeletedMail(List<MailInfo> info);
 
+	void sendPagesDeletedCommentMail(List<MailInfo> info);
+
 }

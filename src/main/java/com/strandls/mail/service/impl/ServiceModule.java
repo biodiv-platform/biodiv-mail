@@ -5,6 +5,7 @@ import com.google.inject.Scopes;
 import com.strandls.mail.service.CCAMailService;
 import com.strandls.mail.service.DataTableMailService;
 import com.strandls.mail.service.DocumentMailService;
+import com.strandls.mail.service.ODKMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PageMailService;
 import com.strandls.mail.service.PermisisonMailService;
@@ -25,6 +26,7 @@ public class ServiceModule extends AbstractModule {
 		bind(PageMailService.class).to(PageMailServiceImpl.class).in(Scopes.SINGLETON);
 		bind(SpeciesMailService.class).to(SpeciesMailServiceImpl.class).in(Scopes.SINGLETON);
 		bind(DataTableMailService.class).to(DataTableServiceImpl.class).in(Scopes.SINGLETON);
+		bind(ODKMailService.class).to(ODKMailServiceImpl.class).in(Scopes.SINGLETON);
 	}
 
 }

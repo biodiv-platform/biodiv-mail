@@ -6,7 +6,6 @@ import com.strandls.mail.model.MailInfo;
 
 public interface DataTableMailService {
 
-
 	void sendDataTablePostToGroupMail(List<MailInfo> info);
 
 	void sendDataTableCommentedMail(List<MailInfo> info);
@@ -16,5 +15,7 @@ public interface DataTableMailService {
 	void sendDataTableDeletedMail(List<MailInfo> info);
 
 	void sendDataTableTaggedMail(List<MailInfo> info);
+
+	void sendDataTableCommentDeleteMail(List<MailInfo> info);
 
 }

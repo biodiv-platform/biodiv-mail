@@ -35,6 +35,12 @@ public class DocumentMailServiceImpl implements DocumentMailService {
 	}
 
 	@Override
+	public void sendDocumentDeletedCommentMail(List<MailInfo> info) {
+		threadUtil.startThread(TEMPLATE.DOCUMENT.getValue(), "Deleted a comment in document", info);
+
+	}
+
+	@Override
 	public void sendDocumentAddedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.DOCUMENT.getValue(), "Document added", info);
 
@@ -61,7 +67,7 @@ public class DocumentMailServiceImpl implements DocumentMailService {
 	@Override
 	public void sendDocumentTaggedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.DOCUMENT.getValue(), "Tagged in document comment", info);
-		
+
 	}
 
 }

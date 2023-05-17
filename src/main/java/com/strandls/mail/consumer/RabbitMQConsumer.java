@@ -158,6 +158,9 @@ public class RabbitMQConsumer {
 			case SPECIES_COMMENT_POST:
 				speciesService.sendSpeciesCommentedMail(info);
 				break;
+			case SPECIES_COMMENT_DELETE:
+				speciesService.sendSpeciesDeletedCommentMail(info);
+				break;
 
 			case DOCUMENT_ADDED:
 				documentService.sendDocumentAddedMail(info);
@@ -180,6 +183,12 @@ public class RabbitMQConsumer {
 
 			case COMMENT_POST:
 				observationService.sendObservationCommentedMail(info);
+				break;
+			case DELETED_COMMENT:
+				observationService.sendObservationDeletedCommentMail(info);
+				break;
+			case DOCUMENT_COMMENT_DELETE:
+				documentService.sendDocumentDeletedCommentMail(info);
 				break;
 			case SUGGEST_MAIL:
 				observationService.sendObservationSuggestedMail(info);
@@ -312,6 +321,10 @@ public class RabbitMQConsumer {
 			case PAGE_COMMENT_POST:
 				pageMailService.sendPageCommentedMail(info);
 				break;
+
+			case PAGE_COMMENT_DELETE:
+				pageMailService.sendPagesDeletedCommentMail(info);
+				break;
 			case PAGE_CREATE:
 				pageMailService.sendPageAddedMail(info);
 				break;
@@ -330,10 +343,12 @@ public class RabbitMQConsumer {
 			case DATATABLE_COMMENT_POST:
 				dataTableMailService.sendDataTableCommentedMail(info);
 				break;
-			case DATATABLE_POST_TO_GROUP:				
+			case DATATABLE_COMMENT_DELETE:
+				dataTableMailService.sendDataTableCommentDeleteMail(info);
+				break;
+			case DATATABLE_POST_TO_GROUP:
 				dataTableMailService.sendDataTablePostToGroupMail(info);
 				break;
-			
 			case ODK_USER_EMAIL:
 				odkMailService.sendODKUserMail(info);
 				break;

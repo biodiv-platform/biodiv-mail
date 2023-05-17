@@ -19,9 +19,9 @@ public interface SpeciesMailService {
 	void sendSpeciesSynonymUpdateMail(List<MailInfo> info);
 
 	void sendSpeciesFieldUpdatedMail(List<MailInfo> info);
-	
+
 	void sendSpeciesFieldDeletedMail(List<MailInfo> info);
-	
+
 	void sendSpeciesFieldAddedMail(List<MailInfo> info);
 
 	void sendSpeciesUpdatedMail(List<MailInfo> info);
@@ -29,7 +29,9 @@ public interface SpeciesMailService {
 	void sendSpeciesUpdatedResorce(List<MailInfo> info);
 
 	void sendSpeciesDeletedMail(List<MailInfo> info);
-	
+
 	void sendSpeciesTaggedMail(List<MailInfo> info);
+
+	void sendSpeciesDeletedCommentMail(List<MailInfo> info);
 
 }

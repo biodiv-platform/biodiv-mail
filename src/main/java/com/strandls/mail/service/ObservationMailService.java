@@ -10,6 +10,7 @@ public interface ObservationMailService {
 	void sendObservationTaggedMail(List<MailInfo> info);
 	void sendObservationSuggestedMail(List<MailInfo> info);
 	void sendObservationCommentedMail(List<MailInfo> info);
+	void sendObservationDeletedCommentMail(List<MailInfo> info);
 	void sendObservationDownloadMail(List<MailInfo> info);
 	void sendObservationFactAddedMail(List<MailInfo> info);
 	void sendObservationFactUpdatedMail(List<MailInfo> info);

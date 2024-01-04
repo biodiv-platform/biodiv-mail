@@ -60,10 +60,9 @@ public class RabbitMQConsumer {
 
 	@Inject
 	private DataTableMailService dataTableMailService;
-	
+
 	@Inject
-	private ODKMailService odkMailService; 
-	
+	private ODKMailService odkMailService;
 
 	@Inject
 	ObjectMapper mapper;
@@ -267,6 +266,9 @@ public class RabbitMQConsumer {
 				ccaMailService.sendCCADeletedMail(info);
 				break;
 			case CCA_DATA_UPDATED:
+				ccaMailService.sendCCAUpdatedMail(info);
+				break;
+			case CCA_DATA_POST_TO_GROUP:
 				ccaMailService.sendCCAUpdatedMail(info);
 				break;
 			case CCA_TEMPLATE_ADDED:

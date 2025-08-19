@@ -19,7 +19,7 @@ public class MailThread extends MailUtil implements Runnable {
 			sendMail();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-		} 
+		}
 	}
 
 }

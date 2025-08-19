@@ -1,20 +1,20 @@
 /**
- * 
+ *
  */
 package com.strandls.mail.service.impl;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.service.PermisisonMailService;
 import com.strandls.mail.util.ThreadUtil;
 
+import jakarta.inject.Inject;
+
 /**
  * @author Abhishek Rudra
  *
- * 
+ *
  */
 public class PermisisonMailServiceImpl implements PermisisonMailService {
 

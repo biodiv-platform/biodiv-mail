@@ -3,13 +3,13 @@ package com.strandls.mail.service.impl;
 import java.util.List;
 import java.util.Properties;
 
-import javax.inject.Inject;
-
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.service.UserMailService;
 import com.strandls.mail.util.AppUtil.TEMPLATE;
 import com.strandls.mail.util.PropertyFileUtil;
 import com.strandls.mail.util.ThreadUtil;
+
+import jakarta.inject.Inject;
 
 public class UserMailServiceImpl implements UserMailService {
 

@@ -5,8 +5,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.inject.Inject;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,9 +15,9 @@ import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
 import com.strandls.mail.service.CCAMailService;
+import com.strandls.mail.service.DataTableMailService;
 import com.strandls.mail.service.DocumentMailService;
 import com.strandls.mail.service.ODKMailService;
-import com.strandls.mail.service.DataTableMailService;
 import com.strandls.mail.service.ObservationMailService;
 import com.strandls.mail.service.PageMailService;
 import com.strandls.mail.service.PermisisonMailService;
@@ -31,6 +29,8 @@ import com.strandls.mail.util.PropertyFileUtil;
 import com.strandls.mail_utility.model.EnumModel.MAIL_TYPE;
 import com.strandls.mail_utility.model.EnumModel.OBJECT_TYPE;
 import com.strandls.mail_utility.util.AppUtil;
+
+import jakarta.inject.Inject;
 
 public class RabbitMQConsumer {
 

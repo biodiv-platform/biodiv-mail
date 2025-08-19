@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.strandls.mail;
 
@@ -12,8 +12,6 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
-
-import javax.servlet.ServletContextEvent;
 
 import org.glassfish.jersey.servlet.ServletContainer;
 import org.slf4j.Logger;
@@ -35,6 +33,7 @@ import com.strandls.mail.util.TemplateUtil;
 import com.strandls.mail.util.ThreadUtil;
 
 import freemarker.template.Configuration;
+import jakarta.servlet.ServletContextEvent;
 
 /**
  * @author Abhishek Rudra
@@ -66,7 +65,7 @@ public class MailServeletContextListener extends GuiceServletContextListener {
 				bind(Channel.class).toInstance(channel);
 				bind(ServletContainer.class).in(Scopes.SINGLETON);
 				Map<String, String> props = new HashMap<String, String>();
-				props.put("javax.ws.rs.Application", ApplicationConfig.class.getName());
+				props.put("jakarta.ws.rs.Application", ApplicationConfig.class.getName());
 				props.put("jersey.config.server.provider.packages", "com");
 				props.put("jersey.config.server.wadl.disableWadl", "true");
 

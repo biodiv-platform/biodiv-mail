@@ -4,11 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 import com.strandls.authentication_utility.util.AuthUtil;
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.thread.MailThread;
+
+import jakarta.inject.Inject;
 
 public class ThreadUtil {
 
@@ -36,7 +36,7 @@ public class ThreadUtil {
 					data.put("unregisterEmailNotification", unregisterUrl);
 					Map<String, Object> whatPosted = (Map<String, Object>) data.get("whatPosted");
 					if (whatPosted != null) {
-						if(whatPosted.get("icon") != null) {
+						if (whatPosted.get("icon") != null) {
 							String iconUrl = whatPosted.get("icon").toString();
 							iconUrl = iconUrl.replace("_th1.", ".");
 							whatPosted.put("icon", iconUrl);

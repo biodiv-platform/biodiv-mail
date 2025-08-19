@@ -1,14 +1,14 @@
 {
-  "modelPackage": "com.strandls.mail.model",
-  "apiPackage": "com.strandls.model.controller",
-  "invokerPackage": "com.strandls.mail",
-  "groupId": "com.strandls.biodiv",
-  "artifactId": "mail-client",
-  "artifactVersion": "1.0.0",
-  "fullJavaUtil": true,
-  "dateLibrary": "legacy",
-  "library": "jersey2",
-  "developerName": "Sethuraman Srinivasan",
-  "developerEmail": "sethuraman@strandls.com",
-  "java8": true
+	"modelPackage": "com.strandls.mail.model",
+	"apiPackage": "com.strandls.mail.controller",
+	"invokerPackage": "com.strandls.mail",
+	"groupId": "com.strandls.biodiv",
+	"artifactId": "mail-client",
+	"artifactVersion": "0.0.21",
+	"fullJavaUtil": true,
+	"dateLibrary": "legacy",
+	"library": "jersey2",
+	"developerName": "Sethuraman Srinivasan",
+	"developerEmail": "sethuraman@strandls.com",
+	"java8": true
 }

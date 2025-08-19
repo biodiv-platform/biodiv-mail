@@ -2,15 +2,14 @@ package com.strandls.mail.service.impl;
 
 import java.util.List;
 
-import javax.inject.Inject;
-
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.service.SpeciesMailService;
-import com.strandls.mail.util.ThreadUtil;
 import com.strandls.mail.util.AppUtil.TEMPLATE;
+import com.strandls.mail.util.ThreadUtil;
+
+import jakarta.inject.Inject;
 
 public class SpeciesMailServiceImpl implements SpeciesMailService {
-	
 
 	@Inject
 	private ThreadUtil threadUtil;
@@ -27,8 +26,6 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), subject, info);
 
-
-
 	}
 
 	@Override
@@ -36,7 +33,7 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "New comment in species", info);
 
 	}
-	
+
 	@Override
 	public void sendSpeciesDeletedCommentMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Deleted a comment in species", info);
@@ -55,7 +52,6 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 
 	}
 
-
 	@Override
 	public void sendSpeciesUpdatedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species updated", info);
@@ -70,7 +66,7 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 
 	@Override
 	public void sendSpeciesCommonNameUpdateMail(List<MailInfo> info) {
-		
+
 		String submitType = info.get(0).getData().get("submitType").toString();
 		String subject;
 		if (submitType.equalsIgnoreCase("post")) {
@@ -79,9 +75,8 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 			subject = "Species common name removed";
 		}
 
-		threadUtil.startThread(TEMPLATE.SPECIES.getValue(),subject , info);
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), subject, info);
 
-		
 	}
 
 	@Override
@@ -95,37 +90,35 @@ public class SpeciesMailServiceImpl implements SpeciesMailService {
 		}
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), subject, info);
 
-		
 	}
 
 	@Override
 	public void sendSpeciesFieldUpdatedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species field updated", info);
 
-		
 	}
 
 	@Override
 	public void sendSpeciesUpdatedResorce(List<MailInfo> info) {
-		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species resource updated", info);		
+		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species resource updated", info);
 	}
 
 	@Override
 	public void sendSpeciesFieldDeletedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species field removed", info);
-		
+
 	}
 
 	@Override
 	public void sendSpeciesFieldAddedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Species field added", info);
-		
+
 	}
 
 	@Override
 	public void sendSpeciesTaggedMail(List<MailInfo> info) {
 		threadUtil.startThread(TEMPLATE.SPECIES.getValue(), "Tagged in species comment", info);
-		
+
 	}
 
 }

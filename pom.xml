@@ -1,71 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
 
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.strandls.biodiv</groupId>
-    <artifactId>mail</artifactId>
-    <packaging>war</packaging>
-    <version>0.0.21</version>
-    <name>biodiv-mail</name>
-    <url>https://github.com/strandls/biodiv-mail</url>
+  <groupId>com.strandls.biodiv</groupId>
+  <artifactId>mail</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.21</version>
+  <name>biodiv-mail</name>
+  <url>https://github.com/strandls/biodiv-mail</url>
 
-    <properties>
-        <maven.compiler.release>21</maven.compiler.release>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
-        <swagger-ui.version>3.23.5</swagger-ui.version>
-        <swagger.version>2.2.21</swagger.version>
-        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
-        <replacer.version>1.5.3</replacer.version>
-        <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
-        <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
-        <openapi-generator-cli.version>4.0.3</openapi-generator-cli.version>
-        <location>com.strandls.mail</location>
-        <sonar.projectKey>strandls_biodiv-mail</sonar.projectKey>
-        <sonar.organization>strandls</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    </properties>
+  <properties>
+    <!-- Java / project -->
+    <java.version>21</java.version>
+    <maven.compiler.release>21</maven.compiler.release>
+    <war-name>mail-api</war-name>
+    <srcDir>src/main/webapp</srcDir>
+    <location>com.strandls.mail</location>
 
-    <distributionManagement>
-        <repository>
-            <id>central</id>
-            <name>jfrog-releases</name>
-            <url>https://devartifactory.indiabiodiversity.org/libs-release</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>jfrog-snapshots</name>
-            <url>https://devartifactory.indiabiodiversity.org/libs-snapshot</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <!-- Plugins -->
+    <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+    <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
+    <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+    <replacer.version>1.5.3</replacer.version>
+    <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <name>libs-release</name>
-            <url>https://devartifactory.indiabiodiversity.org/libs-release</url>
-        </repository>
-        <repository>
-            <id>snapshots</id>
-            <name>libs-snapshot</name>
-            <url>https://devartifactory.indiabiodiversity.org/libs-snapshot</url>
-        </repository>
-        <repository>
-            <id>central-maven</id>
-            <name>Maven Central Repository</name>
-            <url>https://repo1.maven.org/maven2/</url>
-            <releases><enabled>true</enabled></releases>
-            <snapshots><enabled>false</enabled></snapshots>
-        </repository>
-    </repositories>
+    <!-- Swagger/OpenAPI -->
+    <swagger-ui.version>3.23.5</swagger-ui.version>
+    <swagger.version>2.2.21</swagger.version>
+    <openapi-generator-cli.version>7.2.0</openapi-generator-cli.version>
 
-    <dependencies>
+    <!-- Sonar -->
+    <sonar.projectKey>strandls_biodiv-mail</sonar.projectKey>
+    <sonar.organization>strandls</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>central</id>
+      <name>jfrog-releases</name>
+      <url>https://devartifactory.indiabiodiversity.org/libs-release</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>jfrog-snapshots</name>
+      <url>https://devartifactory.indiabiodiversity.org/libs-snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>libs-release</name>
+      <url>https://devartifactory.indiabiodiversity.org/libs-release</url>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>snapshots</id>
+      <name>libs-snapshot</name>
+      <url>https://devartifactory.indiabiodiversity.org/libs-snapshot</url>
+      <snapshots><enabled>true</enabled></snapshots>
+    </repository>
+    <repository>
+      <id>central-maven</id>
+      <name>Maven Central Repository</name>
+      <url>https://repo1.maven.org/maven2/</url>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
 		<!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.36</version>
+            <version>2.0.7</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -75,339 +88,322 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.36</version>
+            <version>2.0.7</version>
         </dependency>
 
-		<!-- Jersey -->
-        <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-server</artifactId>
-            <version>3.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.media</groupId>
-            <artifactId>jersey-media-json-jackson</artifactId>
-            <version>3.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.inject</groupId>
-            <artifactId>jersey-hk2</artifactId>
-            <version>3.1.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jersey.containers</groupId>
-            <artifactId>jersey-container-servlet</artifactId>
-            <version>3.1.3</version>
-        </dependency>
+    <!-- Jersey (Jakarta) -->
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-server</artifactId>
+      <version>3.1.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.media</groupId>
+      <artifactId>jersey-media-json-jackson</artifactId>
+      <version>3.1.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.inject</groupId>
+      <artifactId>jersey-hk2</artifactId>
+      <version>3.1.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.containers</groupId>
+      <artifactId>jersey-container-servlet</artifactId>
+      <version>3.1.3</version>
+    </dependency>
 
-		<!-- HK2 + Guice -->
-        <dependency>
-            <groupId>org.glassfish.hk2</groupId>
-            <artifactId>guice-bridge</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>7.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject.extensions</groupId>
-            <artifactId>guice-servlet</artifactId>
-            <version>7.0.0</version>
-        </dependency>
+    <!-- HK2 + Guice -->
+    <dependency>
+      <groupId>org.glassfish.hk2</groupId>
+      <artifactId>guice-bridge</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject</groupId>
+      <artifactId>guice</artifactId>
+      <version>7.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.inject.extensions</groupId>
+      <artifactId>guice-servlet</artifactId>
+      <version>7.0.0</version>
+    </dependency>
 
 		<!-- Jakarta Platform -->
-        <dependency>
-            <groupId>jakarta.platform</groupId>
-            <artifactId>jakarta.jakartaee-web-api</artifactId>
-            <version>10.0.0</version>
-            <scope>provided</scope>
-        </dependency>
+    <dependency>
+      <groupId>jakarta.platform</groupId>
+      <artifactId>jakarta.jakartaee-web-api</artifactId>
+      <version>10.0.0</version>
+      <scope>provided</scope>
+    </dependency>
 
-		<!-- Jackson -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.15.2</version>
-        </dependency>
+    <!-- Jackson -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.15.2</version>
+    </dependency>
 
-		<!-- JAXB -->
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>4.0.3</version>
-        </dependency>
+    <!-- JAXB -->
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>4.0.3</version>
+    </dependency>
 
-		<!-- Swagger / OpenAPI v3 core -->
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-jaxrs2-jakarta</artifactId>
-            <version>2.2.21</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-integration</artifactId>
-            <version>2.2.21</version>
-        </dependency>
-        <dependency>
-            <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-annotations-jakarta</artifactId>
-            <version>2.2.21</version>
-        </dependency>
+    <!-- Swagger / OpenAPI v3 core -->
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-jaxrs2-jakarta</artifactId>
+      <version>${swagger.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-integration</artifactId>
+      <version>${swagger.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations-jakarta</artifactId>
+      <version>${swagger.version}</version>
+    </dependency>
 
-		<!-- Mail -->
-        <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>jakarta.mail</artifactId>
-            <version>2.0.1</version>
-        </dependency>
+    <!-- Mail -->
+    <dependency>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>jakarta.mail</artifactId>
+      <version>2.0.1</version>
+    </dependency>
 
-		<!-- Freemarker -->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.31</version>
-        </dependency>
+    <!-- Freemarker -->
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.31</version>
+    </dependency>
 
-		<!-- HTTP Client -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.14</version>
-        </dependency>
+    <!-- HTTP Client -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.5.14</version>
+    </dependency>
 
-		<!-- RabbitMQ -->
-        <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
-            <version>5.17.0</version>
-        </dependency>
+    <!-- RabbitMQ -->
+    <dependency>
+      <groupId>com.rabbitmq</groupId>
+      <artifactId>amqp-client</artifactId>
+      <version>5.17.0</version>
+    </dependency>
 
-		<!-- Strandls Internal -->
-        <dependency>
-            <groupId>com.strandls.biodiv</groupId>
-            <artifactId>mail-utility</artifactId>
-            <version>0.0.21</version>
-        </dependency>
-        <dependency>
-            <groupId>com.strandls.biodiv</groupId>
-            <artifactId>authentication-utility</artifactId>
-            <version>0.0.21</version>
-        </dependency>
-    </dependencies>
+    <!-- Strandls Internal -->
+    <dependency>
+      <groupId>com.strandls.biodiv</groupId>
+      <artifactId>mail-utility</artifactId>
+      <version>0.0.21</version>
+    </dependency>
+    <dependency>
+      <groupId>com.strandls.biodiv</groupId>
+      <artifactId>authentication-utility</artifactId>
+      <version>0.0.21</version>
+    </dependency>
+  </dependencies>
 
-    <build>
-        <finalName>mail-api</finalName>
-        <plugins>
-			<!-- Java 21 Compilation -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <release>${maven.compiler.release}</release>
-                </configuration>
-            </plugin>
+  <build>
+    <finalName>${war-name}</finalName>
+    <plugins>
+      <!-- Java 21 -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin.version}</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+        </configuration>
+      </plugin>
 
-			<!-- Swagger OpenAPI Generator (generates swagger.json) -->
-            <plugin>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-maven-plugin-jakarta</artifactId>
-                <version>${swagger.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-openapi</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>resolve</goal>
-                        </goals>
-                        <configuration>
-                            <outputFileName>swagger</outputFileName>
-                            <outputFormat>JSON</outputFormat>
-                            <outputPath>${project.build.directory}</outputPath>
-                            <prettyPrint>true</prettyPrint>
-                            <resourcePackages>
-                                <package>${location}</package>
-                            </resourcePackages>
-                        </configuration>
-                    </execution>
-                </executions>
-                 <dependencies>
-                    <dependency>
-                        <groupId>jakarta.servlet</groupId>
-                        <artifactId>jakarta.servlet-api</artifactId>
-                        <version>5.0.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
+      <!-- Swagger OpenAPI resolve -->
+      <plugin>
+        <groupId>io.swagger.core.v3</groupId>
+        <artifactId>swagger-maven-plugin-jakarta</artifactId>
+        <version>${swagger.version}</version>
+        <executions>
+          <execution>
+            <id>generate-openapi</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>resolve</goal>
+            </goals>
+            <configuration>
+              <outputFileName>swagger</outputFileName>
+              <outputFormat>JSON</outputFormat>
+              <outputPath>${project.build.directory}</outputPath>
+              <prettyPrint>true</prettyPrint>
+              <resourcePackages>
+                <package>${location}</package>
+              </resourcePackages>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+          </dependency>
+        </dependencies>
+      </plugin>
 
-			<!-- Modify swagger.json to add servers property -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>modify-openapi-json</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>com.strandls.mail.ModifyOpenApi</mainClass>
-                            <arguments>
-                                <argument>${project.build.directory}/swagger.json</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+      <!-- Modify swagger.json -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>${exec-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>modify-openapi-json</id>
+            <phase>compile</phase>
+            <goals><goal>java</goal></goals>
+            <configuration>
+              <mainClass>com.strandls.mail.ModifyOpenApi</mainClass>
+              <arguments>
+                <argument>${project.build.directory}/swagger.json</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
-			<!-- Copy modified swagger.json to swagger-ui folder -->
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.3.1</version>
-                <executions>
-                    <execution>
-                        <id>copy-openapi</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/swagger-ui</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.build.directory}</directory>
-                                    <includes>
-                                        <include>swagger.json</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+      <!-- Copy swagger.json -->
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven-resources-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>copy-openapi</id>
+            <phase>prepare-package</phase>
+            <goals><goal>copy-resources</goal></goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/swagger-ui</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>${project.build.directory}</directory>
+                  <includes><include>swagger.json</include></includes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
-			<!-- Unpack Swagger UI WebJar -->
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>unpack</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>org.webjars</groupId>
-                                    <artifactId>swagger-ui</artifactId>
-                                    <version>${swagger-ui.version}</version>
-                                </artifactItem>
-                            </artifactItems>
-                            <outputDirectory>${project.build.directory}/swagger-ui</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+      <!-- Unpack Swagger UI -->
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>${maven-dependency-plugin.version}</version>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals><goal>unpack</goal></goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.webjars</groupId>
+                  <artifactId>swagger-ui</artifactId>
+                  <version>${swagger-ui.version}</version>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${project.build.directory}/swagger-ui</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
 
-			<!-- Replacer Plugin to change swagger-ui index.html -->
-            <plugin>
-                <groupId>com.google.code.maven-replacer-plugin</groupId>
-                <artifactId>replacer</artifactId>
-                <version>${replacer.version}</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>replace</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <file>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/${swagger-ui.version}/index.html</file>
-                    <replacements>
-                        <replacement>
-                            <token>https://petstore.swagger.io/v2/swagger.json</token>
-                            <value>/mail-api/swagger-ui/swagger.json</value>
-                        </replacement>
-                    </replacements>
-                </configuration>
-            </plugin>
+      <!-- Replace swagger-ui index.html -->
+      <plugin>
+        <groupId>com.google.code.maven-replacer-plugin</groupId>
+        <artifactId>replacer</artifactId>
+        <version>${replacer.version}</version>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals><goal>replace</goal></goals>
+          </execution>
+        </executions>
+        <configuration>
+          <file>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/${swagger-ui.version}/index.html</file>
+          <replacements>
+            <replacement>
+              <token>https://petstore.swagger.io/v2/swagger.json</token>
+              <value>/${war-name}/swagger-ui/swagger.json</value>
+            </replacement>
+          </replacements>
+        </configuration>
+      </plugin>
 
-			<!-- WAR Plugin: Add Swagger UI files and swagger.json -->
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
-                <configuration>
-                    <warName>${war-name}</warName>
-                    <warSourceDirectory>${srcDir}</warSourceDirectory>
-                    <webResources combine.children="append">
-                        <resource>
-                            <directory>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/${swagger-ui.version}</directory>
-                            <includes>
-                                <include>**/*.*</include>
-                            </includes>
-                            <targetPath>swagger-ui</targetPath>
-                        </resource>
-                        <resource>
-                            <directory>${project.build.directory}/swagger-ui</directory>
-                            <includes>
-                                <include>swagger.json</include>
-                            </includes>
-                            <targetPath>swagger-ui</targetPath>
-                        </resource>
-                    </webResources>
-                </configuration>
-            </plugin>
+      <!-- WAR packaging: include Swagger UI and swagger.json -->
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${maven-war-plugin.version}</version>
+        <configuration>
+          <warName>${war-name}</warName>
+          <warSourceDirectory>${srcDir}</warSourceDirectory>
+          <webResources combine.children="append">
+            <resource>
+              <directory>${project.build.directory}/swagger-ui/META-INF/resources/webjars/swagger-ui/${swagger-ui.version}</directory>
+              <includes><include>**/*.*</include></includes>
+              <targetPath>swagger-ui</targetPath>
+            </resource>
+            <resource>
+              <directory>${project.build.directory}/swagger-ui</directory>
+              <includes><include>swagger.json</include></includes>
+              <targetPath>swagger-ui</targetPath>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
 
-			<!-- OpenAPI Generator CLI: generate SDK from swagger.json -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>${exec-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-sdk</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>org.openapitools.codegen.OpenAPIGenerator</mainClass>
-                            <arguments>
-                                <argument>generate</argument>
-                                <argument>-i</argument>
-                                <argument>${project.build.directory}/swagger.json</argument>
-                                <argument>-g</argument>
-                                <argument>java</argument>
-                                <argument>-o</argument>
-                                <argument>target/sdk</argument>
-                                <argument>--skip-validate-spec</argument>
-                                <argument>-c</argument>
-                                <argument>swagger-config.json</argument>
-                            </arguments>
-                            <includeProjectDependencies>true</includeProjectDependencies>
-                            <includePluginDependencies>true</includePluginDependencies>
-                        </configuration>
-                    </execution>
-                </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.openapitools</groupId>
-                            <artifactId>openapi-generator-cli</artifactId>
-                            <version>${openapi-generator-cli.version}</version>
-                        </dependency>
-                    </dependencies>
-            </plugin>
-
-        </plugins>
-    </build>
+      <!-- OpenAPI Generator CLI at package -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>${exec-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>generate-sdk</id>
+            <phase>package</phase>
+            <goals><goal>java</goal></goals>
+            <configuration>
+              <mainClass>org.openapitools.codegen.OpenAPIGenerator</mainClass>
+              <arguments>
+                <argument>generate</argument>
+                <argument>-i</argument>
+                <argument>${project.build.directory}/swagger.json</argument>
+                <argument>-g</argument>
+                <argument>java</argument>
+                <argument>-o</argument>
+                <argument>target/sdk</argument>
+                <argument>--skip-validate-spec</argument>
+                <argument>-c</argument>
+                <argument>swagger-config.json</argument>
+              </arguments>
+              <includeProjectDependencies>true</includeProjectDependencies>
+              <includePluginDependencies>true</includePluginDependencies>
+            </configuration>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>openapi-generator-cli</artifactId>
+            <version>${openapi-generator-cli.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
 </project>

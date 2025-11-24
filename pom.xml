@@ -385,6 +385,40 @@
         </configuration>
       </plugin>
 
+      <!-- Add dependencyManagement to generated SDK POM -->
+      <plugin>
+        <groupId>com.google.code.maven-replacer-plugin</groupId>
+        <artifactId>replacer</artifactId>
+        <version>${replacer.version}</version>
+        <executions>
+          <execution>
+            <id>inject-dependency-management</id>
+            <phase>package</phase>
+            <goals><goal>replace</goal></goals>
+            <configuration>
+              <file>${project.build.directory}/sdk/pom.xml</file>
+              <replacements>
+                <replacement>
+                  <token><![CDATA[</properties>]]></token>
+                  <value><![CDATA[</properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Force commons-text 1.13.0 to fix CVE-2022-42889 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>1.13.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>]]></value>
+                </replacement>
+              </replacements>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <!-- OpenAPI Generator CLI at package -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

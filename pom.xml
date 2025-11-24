@@ -413,6 +413,17 @@
         </dependencies>
     </dependencyManagement>]]></value>
                 </replacement>
+                <replacement>
+                  <token><![CDATA[<!-- test dependencies -->]]></token>
+                  <value><![CDATA[<!-- Force commons-text 1.13.0 to fix CVE-2022-42889 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>1.13.0</version>
+        </dependency>
+
+        <!-- test dependencies -->]]></value>
+                </replacement>
               </replacements>
             </configuration>
           </execution>

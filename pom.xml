@@ -424,6 +424,10 @@
 
         <!-- test dependencies -->]]></value>
                 </replacement>
+                <replacement>
+                  <token><![CDATA[<version>3.3.2</version>]]></token>
+                  <value><![CDATA[<version>3.8.0</version>]]></value>
+                </replacement>
               </replacements>
             </configuration>
           </execution>

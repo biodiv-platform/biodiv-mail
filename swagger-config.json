@@ -7,7 +7,7 @@
 	"artifactVersion": "0.0.21",
 	"fullJavaUtil": true,
 	"dateLibrary": "legacy",
-	"library": "jersey2",
+	"library": "jersey3",
 	"developerName": "Sethuraman Srinivasan",
 	"developerEmail": "sethuraman@strandls.com",
 	"java8": true

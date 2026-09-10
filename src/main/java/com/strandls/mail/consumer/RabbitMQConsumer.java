@@ -10,7 +10,10 @@ import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DeliverCallback;
+import com.rabbitmq.client.Recoverable;
+import com.rabbitmq.client.RecoveryListener;
 import com.strandls.mail.model.MailInfo;
 import com.strandls.mail.model.NotificationInfo;
 import com.strandls.mail.model.RecipientInfo;
@@ -70,7 +73,46 @@ public class RabbitMQConsumer {
 	private static final Logger logger = LoggerFactory.getLogger(RabbitMQConsumer.class);
 
 	@Inject
-	private Channel channel;
+	private Connection connection;
+
+	// Dedicated to consuming only, never touched by publisher code, so it is
+	// safe for basicConsume's own dispatch thread(s) to own exclusively.
+	private Channel consumerChannel;
+
+	private synchronized Channel getConsumerChannel() throws IOException {
+		if (consumerChannel == null || !consumerChannel.isOpen()) {
+			consumerChannel = connection.createChannel();
+		}
+		return consumerChannel;
+	}
+
+	/**
+	 * Subscribes both consumers and, since topology recovery is disabled on
+	 * the shared {@link Connection} (see {@link com.strandls.mail.RabbitMqConnection}),
+	 * re-subscribes them itself whenever the connection recovers from a drop -
+	 * the broker forgets consumer registrations on disconnect, so this is a
+	 * plain re-subscribe rather than a duplicate.
+	 */
+	public void startConsuming() throws IOException {
+		getMessage();
+		if (connection instanceof Recoverable) {
+			((Recoverable) connection).addRecoveryListener(new RecoveryListener() {
+				@Override
+				public void handleRecovery(Recoverable recoverable) {
+					try {
+						getMessage();
+						logger.info("Re-subscribed RabbitMQ consumers after connection recovery");
+					} catch (IOException e) {
+						logger.error("Failed to re-subscribe RabbitMQ consumers after recovery", e);
+					}
+				}
+
+				@Override
+				public void handleRecoveryStarted(Recoverable recoverable) {
+				}
+			});
+		}
+	}
 
 	public void getMessage() throws IOException {
 		DeliverCallback callback = (consumerTag, delivery) -> {
@@ -81,11 +123,11 @@ public class RabbitMQConsumer {
 			String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
 			processNotification(message);
 		};
-		channel.basicConsume(PropertyFileUtil.fetchProperty("config.properties", "rabbitmq_queue"), true, callback,
-				consumerTag -> {
+		getConsumerChannel().basicConsume(PropertyFileUtil.fetchProperty("config.properties", "rabbitmq_queue"), true,
+				callback, consumerTag -> {
 				});
-		channel.basicConsume(PropertyFileUtil.fetchProperty("config.properties", "rabbitmq_n_queue"), true,
-				notificationCallback, consumerTag -> {
+		getConsumerChannel().basicConsume(PropertyFileUtil.fetchProperty("config.properties", "rabbitmq_n_queue"),
+				true, notificationCallback, consumerTag -> {
 				});
 	}
 

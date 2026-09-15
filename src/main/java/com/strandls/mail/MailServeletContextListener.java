@@ -62,7 +62,7 @@ public class MailServeletContextListener extends GuiceServletContextListener {
 				try {
 					rabbitConnection = rabbitMqConnection.connect();
 				} catch (Exception e) {
-					logger.error("Failed to establish RabbitMQ connection", e);
+					logger.error("[biodiv-mail] Failed to establish RabbitMQ connection", e);
 				}
 
 				bind(Connection.class).toInstance(rabbitConnection);

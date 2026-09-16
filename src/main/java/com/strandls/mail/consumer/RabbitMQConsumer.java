@@ -37,6 +37,8 @@ import jakarta.inject.Inject;
 
 public class RabbitMQConsumer {
 
+	private static final String SERVICE_NAME = "biodiv-mail";
+
 	@Inject
 	private UserMailService userService;
 
@@ -101,9 +103,9 @@ public class RabbitMQConsumer {
 				public void handleRecovery(Recoverable recoverable) {
 					try {
 						getMessage();
-						logger.info("Re-subscribed RabbitMQ consumers after connection recovery");
+						logger.info("[{}] Re-subscribed RabbitMQ consumers after connection recovery", SERVICE_NAME);
 					} catch (IOException e) {
-						logger.error("Failed to re-subscribe RabbitMQ consumers after recovery", e);
+						logger.error("[{}] Failed to re-subscribe RabbitMQ consumers after recovery", SERVICE_NAME, e);
 					}
 				}
 
